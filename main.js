@@ -3,7 +3,7 @@ const desktopMenu = document.querySelector('.desktop-menu')
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart ')
 const menuHamIcon = document.querySelector('.menu')
 const mobilMenu = document.querySelector('.mobile-menu')
-const aside = document.querySelector('.product-detail')
+const shoppingCartContainer = document.querySelector('.product-detail')
 
 menuEmail.addEventListener('click', toggleDesktopMenu)
 menuHamIcon.addEventListener('click', toggleMobileMenu)
@@ -12,9 +12,9 @@ const cardsContainer = document.querySelector('.cards-container')
 
 
 function toggleDesktopMenu() {
-    const isAsideClosed = aside.classList.contains('inactive')
+    const isAsideClosed = shoppingCartContainer.classList.contains('inactive')
     if (!isAsideClosed) {
-        aside.classList.add('inactive')
+        shoppingCartContainer.classList.add('inactive')
     }
     desktopMenu.classList.toggle('inactive')
 
@@ -22,9 +22,9 @@ function toggleDesktopMenu() {
 }
 
 function toggleMobileMenu() {
-    const isAsideClosed = aside.classList.contains('inactive')
+    const isAsideClosed = shoppingCartContainer.classList.contains('inactive')
     if (!isAsideClosed) {
-        aside.classList.add('inactive')
+        shoppingCartContainer.classList.add('inactive')
     }
     mobilMenu.classList.toggle('inactive')
 }
@@ -37,7 +37,7 @@ function toggleCarritoAside() {
         desktopMenu.classList.add('inactive')
     }
    
-     aside.classList.toggle('inactive')
+     shoppingCartContainer.classList.toggle('inactive')
     
 }
 
