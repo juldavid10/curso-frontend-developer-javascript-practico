@@ -1,14 +1,21 @@
 const menuEmail = document.querySelector('.navbar-email')
 const desktopMenu = document.querySelector('.desktop-menu')
-const menuCarritoIcon = document.querySelector('.navbar-shopping-cart ')
+const menuCarritoIcon = document.querySelector('.navbar-shopping-cart')
+const productDetailCloseIcon = document.querySelector('.product-detail-close')
+
+
 const menuHamIcon = document.querySelector('.menu')
 const mobilMenu = document.querySelector('.mobile-menu')
-const shoppingCartContainer = document.querySelector('.product-detail')
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
+const producDetailContainer = document.querySelector('#productDetail')
+const cardsContainer = document.querySelector('.cards-container')
+
 
 menuEmail.addEventListener('click', toggleDesktopMenu)
 menuHamIcon.addEventListener('click', toggleMobileMenu)
 menuCarritoIcon.addEventListener('click', toggleCarritoAside)
-const cardsContainer = document.querySelector('.cards-container')
+producDetailContainer.addEventListener('click', closeProductDetailAside)
+
 
 
 function toggleDesktopMenu() {
@@ -27,6 +34,8 @@ function toggleMobileMenu() {
         shoppingCartContainer.classList.add('inactive')
     }
     mobilMenu.classList.toggle('inactive')
+
+    closeProductDetailAside();
 }
 
 function toggleCarritoAside() {
@@ -36,9 +45,25 @@ function toggleCarritoAside() {
         mobilMenu.classList.add('inactive')
         desktopMenu.classList.add('inactive')
     }
+
+    const isProductDetailClosed = producDetailContainer.classList.contains('inactive')
+    
+    if (!isProductDetailClosed) {
+        producDetailContainer.classList.add('inactive')
+    }
    
      shoppingCartContainer.classList.toggle('inactive')
     
+}
+
+function openProductDetailAside() {
+    shoppingCartContainer.classList.add('inactive')
+    producDetailContainer.classList.remove('inactive')
+    
+}
+
+function closeProductDetailAside() {
+    producDetailContainer.classList.add('inactive')
 }
 
 const productList =[]
@@ -70,6 +95,7 @@ function renderProducts(arr) {
      
         const productImg = document.createElement('img')
         productImg.setAttribute('src', product.image)
+        productImg.addEventListener("click", openProductDetailAside)
      
         const productInfo = document.createElement('div')
         productInfo.classList.add('product-info')
